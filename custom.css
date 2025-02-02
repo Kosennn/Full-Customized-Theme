@@ -1,1 +1,669 @@
+/**
+* @name ItWasLongToEdit
+* @author Kosen
+* @version 0.1.0
+* @description Remove useless buttons or sections, according to me + custom
+* @version 1.0.1
+*/
 
+:root{
+    /* Discord variables */
+
+    /* --channels-default: #c77dff; */
+    /*--background-primary: rgba(184, 179, 189, 0.137); */
+    /* --background-secondary: rgb(9, 9, 9); */
+    /* --background-secondary-alt: rgba(255, 255, 255, 0.2); */
+    /* --channeltextarea-background: rgba(18, 3, 43, 0.4); */
+
+    /* Kosen's variables */
+
+    --black: rgba(0, 0, 0, 1);
+    --black-10: rgba(0, 0, 0, .15);
+    --black-25: rgba(0, 0, 0, .3);
+    --black-50: rgba(0, 0, 0, .5);
+    --black-75: rgba(0, 0, 0, .75);
+    --white: rgba(255, 255, 255, 1);
+    --white-10: rgba(255, 255, 255, .1);
+    --white-25: rgba(255, 255, 255, .3);
+    --white-50: rgba(255, 255, 255, .5);
+    --white-75: rgba(255, 255, 255, .75);
+    --offline: rgba(116, 116, 116, .75);
+    --idle: rgba(255, 128, 0, 1);
+    --dnd: rgba(255, 0, 0, 1);
+    --online: rgba(0, 128, 0, 1);
+    --transparent: transparent;
+
+    --text: var(--white-75);
+    --round: .5rem;
+    --round-top: .5rem .5rem 0 0;
+    --round-bottom: 0 0 .5rem .5rem;
+    
+    --background-image: url('https://w.wallhaven.cc/full/ex/wallhaven-exyw3o.jpg');
+    --background-primary: transparent;
+	--background-secondary: transparent;
+    --background-secondary-alt: transparent;
+    --background-tertiary: transparent;
+}
+
+::-webkit-scrollbar{ /* Disable scrollbars */
+    display: none;
+}
+
+*{ /* Text color */
+    color: var(--text);
+    border: 0;
+}
+
+.markup__75297 a{ /* Link color */
+    color:var(--white-25) !important;
+}
+
+*::selection{ /* Color of the selection bg */
+    background-color: var(--white-25);
+}
+
+/* Random stuff I removed */
+
+.channelAppLauncher_e6e74f, /* App launcher */
+.button__201d5 .lookBlank__201d5.colorBrand__201d5.grow__201d5,
+.channel__972a0[aria-posinset="2"], /* Nitro button */
+.channel__972a0[aria-posinset="2"] + li, /* Shop button */
+h2.privateChannelsHeaderContainer__99e7c div, /* + symbol in direct messages */
+a.anchor_edefb8>div, /* Help Button */
+div.flex__7c0ba[aria-expanded="false"], /* Region 'automatic' call */
+.tutorialContainer__650eb, /* Remove add servers */
+.footer__214dc, /* Remove discover */
+[aria-label="Start An Activity"], /* Remove start an activity */
+button[aria-label="Noise Suppression powered by Krisp"], /* Remove noise suppression button */
+:where(.banner__68edb)::before, /* Remove line profile */
+.wrapper__1405b .buttonContainer__1405b, /* Remove activity button from call */
+.bottomControls_bfe55a.controlSection_bfe55a > .flex__7c0ba.horizontal__7c0ba.justifyStart_abf706.alignCenter_abf706.noWrap_abf706, /* Remove soundboard button in call section */
+.flex__7c0ba.horizontal__7c0ba.justifyEnd_abf706.alignStretch_abf706.noWrap_abf706,/* Region - automatic*/
+.theme-dark .children__9293f:after, /* Remove little gradient next to call button */
+[type="button"].disableButton_d286c5, /* Disable Account button */
+[type="button"].button__201d5.lookOutlined__201d5, /* Delete Account button */
+.container_c0c49a,/* Delete send a gift */
+.buttons__74017 > :nth-child(3){ /* Delete stickers */
+    display: none;
+}
+
+body{ /* Image bg */
+	background: var(--background-image) center/cover no-repeat;
+    backdrop-filter: blur(5px);
+    filter: saturate(1);
+}
+
+.appMount__51fd7{ /* Random background layer */
+    background: var(--transparent);
+}
+
+.app__160d8{ /* Main bg less titlebar */
+    background: var(--transparent);
+    padding: 0.1rem 0 0 0;
+}
+
+.layer__960e4{ /* Settings section */
+    background: var(--transparent);
+}
+
+.appAsidePanelWrapper_a3002d,
+.wrapper_e131a9.container_e131a9,
+.notAppAsidePanel_a3002d,
+.app_a3002d{ /* Random background layer */
+    background: var(--transparent);
+}
+
+.channel__972a0:active{ /* I don't remember */
+    background-color: red;
+}
+
+.bg__960e4{ /* Overall color z+1 */
+    background: var(--transparent);
+}
+
+/* ### Private message ### */
+
+.base_c48ade{ /* Main chat bg + friends list dm  */
+    background: var(--transparent);
+}
+
+.chat_f75fb0{ /* Main chat + Section top dm bg */
+    background: var(--transparent);
+    border-radius: var(--round-top);
+    padding: 0 .5rem .5rem .5rem;
+}
+
+.chatContent_f75fb0{ /* Main chat bg */
+    background: var(--black-10);
+    border-radius: var(--round);
+    margin: .5rem 0 0 0;
+}
+
+.title_f75fb0.container__9293f.themed__9293f{ /* Section top dm */
+    background: var(--black-25);
+    border-radius: var(--round);
+}
+
+.interactive_bf202d:hover, /* Selected private message hovering */
+.interactive_bf202d:active, /* Selected private message active */
+.interactive_bf202d:focus{ /* Selected private message focusing */
+    background: var(--white-10);
+}
+
+.interactiveSelected__972a0{ /* Selected private message */
+    background: var(--black-25);
+}
+
+.newMessagesBar__0f481.barBase__0f481{ /* New message notification bg */
+    background: var(--black-50);
+}
+
+.jumpToPresentBar__0f481{ /* 'You're viewing older messages' bar */
+    background: var(--black-50);
+    border-radius: var(--round);
+    min-height: 20px;
+}
+
+.barButtonBase__0f481{ /* 'You're viewing older messages' bar adjustments */
+    height: 16px;
+    padding: 0 12px;
+}
+
+.scrollerSpacer__36d07{ /* Height between last message and 'Send message' section */
+    height: 1rem;
+}
+
+li:hover{ /* Message hovering */
+    background: var(--black-10);
+}
+
+.channelTextArea_f75fb0, .themedBackground__74017{ /* Send message */
+    background: var(--black-25);
+}
+.form_f75fb0.formWithLoadedChatInput_f75fb0,
+.form_f75fb0.formWithLoadedChatInput_a7d72::before,
+.channelBottomBarArea_f75fb0,
+.channelTextArea_f75fb0.channelTextArea__74017{ /* Send message + bg */
+    background: transparent !important;
+}
+
+
+.wrapper_cb9592.minimum_cb9592{ /* Call section */
+    background: var(--black-25);
+    border-radius: var(--round);
+}
+
+.avatar_c19a55{ /* Pfp rounded */
+    border-radius: 20%;
+}
+
+/* 'New message' notification */
+
+div[id="---new-messages-bar"]{ 
+    border-color: var(--black-50);
+    display: block; /* Replace 'block' to 'none' if you don't want it */
+}
+
+div[id="---new-messages-bar"] span{
+    background: var(--black-50);
+    color:var(--white-50);
+}
+
+div[id="---new-messages-bar"] span path{
+    fill: var(--black-50);
+    color: var(--black-50);
+}
+
+/* Pinned messages */
+
+.footer__45690, /* Pinned messages pop-up */
+.messagesPopoutWrap__45690{
+    background: var(--black-10);
+    backdrop-filter: blur(10px);
+    top: 11px;
+}
+
+.messageGroupWrapper__45690{ /* Pinnned messages - messages */
+    background-color: var(--black-25);
+    border: var(--transparent);
+    margin: 0 .5rem .5rem 0; 
+}
+
+.messagesPopout__45690{ /* Pinned messages adjustments */
+    max-height: 750px;
+}
+
+/* Jump button while hovering */
+
+.jumpButton__45690, /* Jump button in pinned messages */
+.button__02a39{ /* Jump button in search option */
+    background-color: var(--white-10);
+}
+
+/*.block__30cbe > div[data-text-variant="text-sm/bold"]{
+    display: initial;
+}*/ /* CHANGE IT!! */
+
+/* Add friends to dm */
+
+.popout_cba592{ /* Main panel */
+    background: var(--black-25);
+    backdrop-filter: blur(10px);
+    top: 11px;
+}
+
+path[fill="var(--brand-500)"]{ /* Check color */
+    fill: var(--white-25);
+}
+
+html:not(.visual-refresh).theme-dark .checkbox_f525d3{ /* Check border */
+    border-color: var(--white-25);
+}
+
+.checkboxWrapper_f525d3.alignCenter_f525d3.checkbox_bbd192.checked_f525d3 .checkbox_f525d3.box_f525d3.checked_f525d3{ /* Check border checked */
+    border-color: var(--white-75) !important;
+}
+
+.lookFilled__201d5.colorBrand__201d5:disabled, 
+.lookFilled__201d5.colorBrand__201d5[aria-disabled=true]{ /* Create DM button disabled */
+    background: var(--black-25);
+}
+
+.lookFilled__201d5.colorBrand__201d5{ /* Create DM button */
+    background-color: var(--white-10);
+}
+
+.lookFilled__201d5.colorBrand__201d5:hover{ /* Create DM button while hovering box-sizing: ;*/
+    background-color: var(--white-25);
+}
+
+/* User profile panel */
+
+.panel_c0bea0{ /* Main panel */
+    background: var(--black-10);
+    margin: .5rem 0 .5rem 0.5rem;
+    padding: 0;
+    border-radius: var(--round);
+    height: fit-content;   
+}
+
+.footer__537ec{ /* Footer user profile bg */
+    background: var(--transparent);
+}
+
+.inner_c0bea0.panel_c0bea0{ /* User Profile bg */
+    background: var(--transparent);
+}
+
+div.banner__68edb.banner__537ec{ /* User Profile banner */
+    background: var(--transparent) !important;
+}
+
+.body__747b1{ /* Adjustment */
+    margin: 0.5rem;
+}
+
+.overlay_c0bea0.panel_c0bea0.overlay__747b1{ /* Adjustment */
+    margin: .5rem 0 .5rem;
+}
+
+/* Find panel */
+
+.searchBar__97492{ /* Search bar */
+    background-color: var(--transparent);
+}
+.searchResultsWrap_a9e706{ /* Find shortcut */
+    background: var(--black-10);
+    border-radius: var(--round);
+    margin: .5rem 0 0 .5rem;
+}
+
+.container_fc561d,
+.container__2692d,
+.messagesPopoutWrap__45690{ /* Inbox */
+    background: var(--transparent);
+    backdrop-filter: blur(10px);
+    top: 14px;
+}
+
+.container__0f711{ /* Inbox 'For you' */
+    background: var(--transparent);
+    backdrop-filter: blur(10px);
+    margin: 0 .5rem 0 0;
+}
+
+.row__6fddf:hover{ /* Inbox 'For you' notification */
+    background-color: var(--transparent);
+    backdrop-filter: blur(10px);
+}
+
+.container__2692d.recentMentionsPopout__95796{ /* Inbox 'Unreads' */
+    background: var(--transparent);
+    backdrop-filter: blur(10px);
+    
+}
+
+.channelHeader__35a7e{ /* Inbox 'Unreads' title */
+    background: var(--transparent);
+    backdrop-filter: blur(10px);
+}
+
+.messages__1ccd1{ /* Inbox 'Unreads' messages */
+    background: var(--black-10);
+    backdrop-filter: blur(10px);
+    margin: 0 .5rem 0 0;
+}
+
+.recentMentionsPopout__95796.messagesPopoutWrap__45690{ /* Inbox 'Mentions' */
+    background: var(--transparent);
+    backdrop-filter: blur(10px);
+}
+
+.channelHeader__35a7e{ /* Inbox 'Mentions' titles */
+    background: var(--transparent);
+    backdrop-filter: blur(10px);
+}
+
+.messageContainer__95796{ /* Inbox 'Mentions' messages */
+    background: var(--black-10);
+    backdrop-filter: blur(10px);
+    margin: 0 .5rem 0 0;
+}
+
+.grid__623de.hasThumbnail__623de{
+    background: var(--transparent)!important;
+}
+
+.gridContainer__623de{
+    background: var(--black-25)!important;
+}
+
+.button__06eda, /* Every buttons except -v */
+.friendRequestsButton__523aa, /* 'View Friend Requests' button */
+.jumpButton__1ccd1, /* 'Jump' Button */
+.jumpButton_ed0c8c{ /* 'Jump' Button #2 */
+    background: var(--black-25);
+}
+
+/* ### Friends dm panel ### */
+
+.sidebar_c48ade{ /* Friends dm list + profile */
+    background-color: var(--transparent);
+}
+
+.privateChannels__35e86{ /* Friends list + 'find or start a conversation' */
+    background: var(--transparent);
+}
+
+.channel__972a0.container_e45859{ /* Friends button + Friends bg */
+    background: var(--transparent);
+    margin: 0 .5rem!important;
+}
+
+.theme-dark .scroller__99e7c{ /* Friends list bg */
+    background: var(--black-10);
+    border-radius: var(--round-bottom);
+}
+
+.searchBar__35e86{ /* Find or start a conversation bg */
+    background: var(--black-10);
+    border-radius: var(--round-top);
+}
+
+.searchBar__35e86 .searchBarComponent__35e86{ /* Find or start a conversation text */
+    color: var(--white-50);
+    background: var(--transparent);
+}
+
+.searchBar__35e86,
+.content_f75fb0::before{ /* Find or start a conversation line bottom */
+    box-shadow: none !important;
+}
+
+/* ### Friends panel ### */
+
+.container__133bf{ /* Friends panel bg */
+    background: var(--transparent);
+}
+
+.container__133bf > .theme-dark.themed__9293f{ /* Friends menu */
+    background: var(--black-10);
+    margin: 0 .5rem;
+    width: initial;
+    border-radius: var(--round);
+}
+
+.searchBar__5ec2f{ /* Search bar */
+    background-color: var(--black-25);
+}
+
+.scroller__7d20c{ /* 'Active now' padding */
+    padding: 0.5rem;
+}
+
+.nowPlayingColumn__133bf{ /* 'Active now' panel */
+    background: var(--transparent);
+}
+
+.container__7d20c{  /* 'Active now' overlay panel  */
+    background: var(--transparent);
+}
+
+.itemCard__7e549{ /* 'Active Now' cards */
+    background-color: var(--black-25);
+}
+
+.theme-dark .outer_bf1984.interactive_bf1984:hover, /* 'Active Now' cards hover + active */
+.theme-dark .outer_bf1984.active_bf1984{
+    background-color: var(--black-50);
+}
+
+.tabBody__133bf::before{ /* Remove line above friends menu */
+    box-shadow: none;
+}
+
+/* ### Servers list panel ### */
+
+.wrapper_ef3116{ /* Servers list bg */
+    background: var(--black-10);
+    border-radius: var(--round);
+    padding: .5rem 0;
+    margin: 0 .5rem .5rem .5rem;
+}
+
+.none_d125d2.scrollerBase_d125d2{ /* Servers list bg-2 */
+    background: var(--transparent);
+}
+
+/* ### Overall ### */
+
+/* Status colors */
+
+rect.pointerEvents__44b0c{ /* Online status */
+    fill: var(--online);
+    mask: none;
+    clip-path: circle(50% at 50% 50%);
+}
+
+rect[mask="url(#svg-mask-status-idle)"]{ /* Idle status */
+    fill: var(--idle) !important;
+    mask: none;
+    clip-path: circle(50% at 50% 50%);
+}
+
+rect[mask="url(#svg-mask-status-offline)"]{ /* Offline status */
+    fill: var(--offline) !important;
+    mask: none;
+    clip-path: circle(50% at 50% 50%);
+}
+
+rect[mask="url(#svg-mask-status-dnd)"]{ /* Do not disturb status */
+    fill: var(--dnd) !important;
+    mask: none;
+    clip-path: circle(50% at 50% 50%);
+}
+
+rect[mask="url(#svg-mask-status-online-mobile)"]{ /* Online mobile status */
+    fill: var(--online) !important;
+    mask: none;
+}
+
+/* ### Profile ### */
+
+/* Adjust profile pop-up */
+
+div[aria-label=".kosen."] > div{
+    max-width: 304px;
+    background: var(--black-75);
+    backdrop-filter: blur(10px);
+}
+
+.clickable__75742:hover .overlay__75742:after { /* Remove black overlay */
+    opacity: 0;
+}
+
+.accountProfilePopoutWrapper__37e49{ /* Background */
+    background: var(--transparent);
+    left: -2.4rem;
+    gap: 0;
+    padding: 0;
+    margin: 0;
+}
+
+.inner_c0bea0.biteSize_c0bea0{ 
+    background: var(--transparent);
+}
+
+.container_e131a9{ /* Remove line profile pop-up*/
+    border: none;
+}
+
+.visibleContainer_af9888 > div{ /* Custom message */
+    display: initial;
+} 
+
+.panels_c48ade{ /* Voice call + info + profile */
+    background: var(--black-25);
+    border-radius: var(--round);
+    margin: .5rem 0;
+}
+
+.panels_c48ade *{ /* Remove line between activity and voice call */
+    border: none;
+}
+
+div.actionButtons_e131a9 button[type="button"],
+div.actionButtons_e131a9 button[type="button"]:hover,
+div.actionButtons_e131a9 button[type="button"]:active{ /* Buttons in voice call + info */
+    background-color: var(--transparent);
+}
+
+button.button__67645.enabled__67645:hover,
+span.button__67645.enabled__67645:hover{ /* Disconnect button */
+    background-color: var(--transparent);
+}
+
+/* Call section */
+
+.colorable_f1ceac.white_f1ceac,
+.colorable_f1ceac.white_f1ceac:hover,
+.colorable_f1ceac.primaryDark_f1ceac,
+.colorable_f1ceac.primaryDark_f1ceac:hover,
+.colorable_f1ceac.red_f1ceac,
+.colorable_f1ceac.red_f1ceac:hover{ /* Call buttons */
+    background: var(--black-25);
+}
+
+.bottomControls_bfe55a.controlSection_bfe55a{ /* Fix align buttons */
+    flex-direction: column;
+}
+
+.speaking_f910d0,
+.avatarSpeaking__44b0c{ /* Circle around pfp during call */
+    box-shadow: inset 0 0 0 3px var(--online) !important; /* Change number of 'px' to set the circle thicker or thinner */
+}
+
+/* Voice messages */
+
+.playing_a8e786,
+.container_a8e786 .playing_a8e786,
+.playing_a8e786 .playButtonContainer_a8e786,
+.theme-dark .container_a8e786:not(.playing_a8e786) .playButtonContainer_a8e786, /* Play button voice message */
+.theme-dark .container_a8e786:not(.playing_a8e786) .playButtonContainer_a8e786::before,
+.theme-dark .container_a8e786:not(.playing_a8e786) .playButtonContainer_a8e786::after,
+.theme-dark .container_a8e786:not(.playing_a8e786) .playButtonContainer_a8e786:hover,
+.playing_a8e786 .playButtonContainer_a8e786:active, /* Button while pausing bg */
+.theme-dark .container_a8e786:not(.playing_a8e786) .playButtonContainer_a8e786:active{ /* Play button voice message while hovering */
+    background: var(--transparent); 
+}
+
+.ripple_a8e786:not(.reducedMotion_a8e786){ /* Remove animation */
+    display: none;
+    background: var(--transparent);
+}
+
+.container_a8e786{ /* Voice message bg */
+    background: var(--black-25); 
+}
+
+.mediaBarInteractionVolume_b26b79{ /* Volume outside bg */
+    background: var(--black-50);
+}
+
+.mediaBarInteraction_b26b79:hover .mediaBarGrabber_b26b79,
+.mediaBarInteractionDragging_b26b79 .mediaBarGrabber_b26b79, /* Slider while dragging */
+.mediaBarInteractionDragging_b26b79 .mediaBarInteractionDragging_b26b79:hover .mediaBarGrabber_b26b79{
+    background: var(--transparent);
+}
+
+.mediaBarInteractionDragging_b26b79 .mediaBarGrabber_b26b79{ /* Slider while dragging */
+    background-color: var(--transparent);
+}
+
+.fakeEdges_b26b79,
+.fakeEdges_b26b79::after,
+.fakeEdges_b26b79::before{ /* Volume slider */
+    background: var(--white-10);
+}
+
+.mediaBarWrapperVolume_b26b79,
+.mediaBarWrapperVolume_b26b79::after,
+.mediaBarWrapperVolume_b26b79::before{ /* Volume slider bg */
+    background: var(--transparent);
+}
+
+.full-motion.mediaBarGrabber_b26b79{
+    display: none;
+}
+
+.members_c8ffbb{ /* Members list in group bg */
+    background: var(--black-10);
+    margin: .5rem 0 0 .5rem;
+    border-radius: var(--round);
+}
+
+/* Minor adjustments */
+
+.scrollableContainer__74017{ /* Adjust channel chat */
+    padding: 0 1rem 0 0; 
+}
+
+h2.privateChannelsHeaderContainer__99e7c{ /* Adjust direct messages */
+    padding: .5rem 1rem .5rem; 
+}
+
+.avatarWrapper__37e49{ /* Adjust custom message on profile */
+    margin: 0; 
+}
+
+.form_f75fb0{ /* Adjust chat bottom */
+    margin: 0; 
+}
+
+.inner_c0bea0.biteSize_c0bea0{ /* Adjust profile */
+    padding: 0 .5rem 0 0;
+}
+
+.body_af7fb7{ /* Profile info pop-up */
+    padding: 0 .5rem .5rem .5rem;
+}
